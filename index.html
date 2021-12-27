@@ -10,11 +10,13 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather News App</title>
   </head>
   <body>
     <div class="container">
+      <div class="weather-app-wrapper">
       <div class="weather-app">
         <hr />
         <h1>The Weather</h1>
@@ -45,7 +47,7 @@
             <h5 id="time">14:00</h5>
           </div>
           <div class="col-8">
-            <h5>Cloudy</h5>
+            <h5 id="description">Cloudy</h5>
             <h4>
               <span class="temperature" id="temperature">12</span>
               <span class="units">
@@ -55,12 +57,11 @@
             </h4>
         </div>
         <div class="col-2">
-          <ul>
-            <li>13 | 7°C</li>
-            <li>Humidity: 56%</li>
-            <li>Wind: 19 km/h</li>
-          </ul>
+          <h6><strong>13</strong> | 7°C</h6>
+            <h6>Humidity: <span id="humidity">56</span>%</h6>
+            <h6>Wind: <span id="wind">19</span> km/h</h6>
         </div>
+      </div>
       </div>
       <small><a href="https://github.com/mburucuya24/vanilla-weather-app" target="_blank">Open-source code</a> by Pauline Hwang</small>
     </div>

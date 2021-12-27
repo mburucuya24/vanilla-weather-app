@@ -11,14 +11,19 @@ li {
 small {
   text-align: center;
 }
-.weather-app {
+.weather-app-wrapper {
   max-width: 1000px;
+  margin: 15px auto;
+}
+.weather-app {
   border: 1px solid;
   border-radius: 10px;
   display: block;
-  margin: 15px auto;
   padding: 0 15px 15px;
 }
 .col-8 {
   text-align: center;
+}
+#description::first-letter {
+  text-transform: capitalize;
 }
