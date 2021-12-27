@@ -19,23 +19,42 @@
         <hr />
         <h1>The Weather</h1>
         <hr />
-        <ul>
-          <li>Warsaw</li>
-          <li>Asunción</li>
-          <li>Washington, DC</li>
-          <li>Seattle</li>
-          <li>Seoul</li>
-        </ul>
         <div class="row">
-          <div class="col-4">
-            <ul>
-              <li>Warsaw, Poland</li>
-              <li>Monday 14:00</li>
-            </ul>
+          <div class="col">Warsaw</div>
+          <div class="col">Asunción</div>
+          <div class="col">Washington, DC</div>
+          <div class="col">Seattle</div>
+          <div class="col">Seoul</div>
+          <div class="col-3.5">
+            <form id="search">
+              <input type="submit" id="request-geolocation" value="📍" />
+              <input
+                type="text"
+                id="enter-city"
+                placeholder="Enter your city"
+              />
+              <input type="submit" id="search-city" value="🔍" />
+            </form>
           </div>
-          <div class="col-4">12 °C | °F
         </div>
-        <div class="col-4">
+        <br />
+        <div class="row">
+          <div class="col-2">
+            <h4 id="city">Warsaw</h4>
+            <h5 id="day">Monday</h5>
+            <h5 id="time">14:00</h5>
+          </div>
+          <div class="col-8">
+            <h5>Cloudy</h5>
+            <h4>
+              <span class="temperature" id="temperature">12</span>
+              <span class="units">
+                <a href="#" id="celsius-link">°C</a> |
+                <a href="#" id="fahrenheit-link">°F</a>
+              </span>
+            </h4>
+        </div>
+        <div class="col-2">
           <ul>
             <li>13 | 7°C</li>
             <li>Humidity: 56%</li>
