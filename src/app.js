@@ -22,6 +22,44 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function showPosition(position) {
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(showTemp);
+}
+
+function getLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+let input = document.querySelector("#request-geolocation");
+input.addEventListener("click", getLocation);
+
+function searchCity(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#city-input");
+
+  let cityElement = document.querySelector("#city");
+  if (searchInput.value) {
+    cityElement.innerHTML = searchInput.value;
+  } else {
+    cityElement.innerHTML = null;
+    alert(`Please enter a city`);
+  }
+
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = searchInput.value;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -44,9 +82,5 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
-let units = "metric";
-let city = "Warsaw";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
-axios.get(apiUrl).then(displayTemperature);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
