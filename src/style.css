@@ -8,8 +8,10 @@ ul {
 li {
   list-style: none;
 }
-small {
+p {
   text-align: center;
+  font-size: smaller;
+  line-height: 8px;
 }
 .weather-app-wrapper {
   max-width: 1000px;

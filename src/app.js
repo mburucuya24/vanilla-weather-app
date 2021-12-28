@@ -61,22 +61,28 @@ function searchCity(event) {
 }
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temperature");
-  let cityElement = document.querySelector("#city");
-  let descriptionElement = document.querySelector("#description");
-  let humidityElement = document.querySelector("#humidity");
-  let windElement = document.querySelector("#wind");
-  let dateElement = document.querySelector("#date");
-  let iconElement = document.querySelector("#icon");
-
   celsiusTemperature = response.data.main.temp;
+  let windSpeed = response.data.wind.speed;
 
+  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
+
+  let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+
+  let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  let windElement = document.querySelector("#wind-speed");
+  windElement.innerHTML = Math.round(windSpeed);
+
+  let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -91,6 +97,14 @@ function displayFahrenheitTemperature(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+  windSpeed = response.data.wind.speed;
+
+  let windElement = document.querySelector("#wind-speed");
+  windElement.innerHTML = Math.round(windSpeed / 1.609);
+
+  let speedUnitsElement = document.querySelector("#speed-units");
+  speedUnitsElement.innerHTML = `mi/h`;
 }
 
 function displayCelsiusTemperature(event) {
@@ -99,6 +113,14 @@ function displayCelsiusTemperature(event) {
   celsiusLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  windSpeed = response.data.wind.speed;
+
+  let windElement = document.querySelector("#wind-speed");
+  windElement.innerHTML = Math.round(windSpeed);
+
+  let speedUnitsElement = document.querySelector("#speed-units");
+  speedUnitsElement.innerHTML = `km/h`;
 }
 
 let celsiusTemperature = null;
