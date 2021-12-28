@@ -12,6 +12,7 @@ p {
   text-align: center;
   font-size: smaller;
   line-height: 8px;
+  padding: 10px;
 }
 .weather-app-wrapper {
   max-width: 1000px;
@@ -32,6 +33,16 @@ p {
 }
 .weather-temperature .active:hover {
   text-decoration: none;
+}
+.weather-forecast-date {
+  font-size: 18px;
+  text-align: center;
+}
+.weather-forecast-temperatures {
+  text-align: center;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.5;
 }
 #description::first-letter {
   text-transform: capitalize;
