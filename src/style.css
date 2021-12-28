@@ -24,6 +24,13 @@ small {
 .col-8 {
   text-align: center;
 }
+.weather-temperature .active {
+  color: #000000;
+  cursor: default;
+}
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
 #description::first-letter {
   text-transform: capitalize;
 }
