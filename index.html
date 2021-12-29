@@ -10,6 +10,11 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link
+    href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic'
+    rel='stylesheet'
+    type='text/css'
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather News App</title>
@@ -21,6 +26,7 @@
         <hr />
         <h1>The Weather</h1>
         <hr />
+        <div class="subhead">
         <div class="row">
           <div class="col">Warsaw</div>
           <div class="col">Asunción</div>
@@ -28,7 +34,7 @@
           <div class="col">Seattle</div>
           <div class="col">Seoul</div>
           <div class="col-3.5">
-            <form id="search-form">
+            <form class="location-form" id="search-form">
               <input type="submit" id="request-geolocation" value="📍" />
               <input
                 type="text"
@@ -40,13 +46,14 @@
             </form>
           </div>
         </div>
+        </div>
         <br />
         <div class="row">
-          <div class="col-2">
+          <div class="col-3">
             <h4 id="city">Warsaw</h4>
-            <h6>Last updated: <span id="date"></span></h6>
+            <h6><span id="date"></span></h6>
           </div>
-          <div class="col-8">
+          <div class="col-6">
             <div class="clearfix weather-temperature">
             <img src="" alt="" id="icon" />
             <h5 id="description">Cloudy</h5>
@@ -58,14 +65,17 @@
               </span>
             </h4>
             </div>
-        </div>
-        <div class="col-2">
+          </div>
+          <div class="col-3">
+            <div class ="weather-details">
           <h6><strong>13</strong> | 7°C</h6>
             <h6>Humidity: <span id="humidity">56</span>%</h6>
             <h6>Wind: <span id="wind-speed">19</span> <span id="speed-units">km/h</span></h6>
-        </div>
+          </div>
+          </div>
         <hr />
         <div class="weather-forecast" id="forecast"></div>
+      </div>
       </div>
     </div>
     <p><a href="https://github.com/mburucuya24/vanilla-weather-app" target="_blank">Open-source code</a> by Pauline Hwang</p>
