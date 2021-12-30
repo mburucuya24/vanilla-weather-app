@@ -49,8 +49,11 @@ function searchCity(event) {
     alert(`Please enter a city`);
   }
 
+  search(searchInput.value);
+}
+
+function search(city) {
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
-  let city = searchInput.value;
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
@@ -66,11 +69,11 @@ function displayForecast() {
     forecastHTML =
       forecastHTML +
       `
-        <div class="col-2">
+        <div class="col">
             <div class="card">
               <div class="card-body">
                 <div class="weather-forecast-date">${day}</div>
-                <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" />
+                <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" class="icons"/>
                 <div class="weather-forecast-temperatures">
                   <span class="weather-forecast-temperature-max">14</span> | <span class="weather-forecast-temperature-min">6</span>             
                 </div>
@@ -160,5 +163,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("New York");
+search("Warsaw");
 displayForecast();

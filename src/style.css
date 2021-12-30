@@ -18,7 +18,7 @@ p {
   text-align: center;
   font-size: smaller;
   line-height: 8px;
-  padding: 10px;
+  padding: 0;
 }
 .weather-app-wrapper {
   max-width: 1000px;
@@ -47,10 +47,13 @@ p {
   text-decoration: none;
 }
 .weather-details {
-  padding-left: 40px;
+  padding-left: 80px;
+}
+.card {
+  margin: 12px;
 }
 .weather-forecast-date {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
 }
 .weather-forecast-temperatures {
