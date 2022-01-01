@@ -36,6 +36,16 @@ p {
 .location-form {
   padding-right: 16px;
 }
+.geolocation-button {
+  border: 1px solid;
+  border-color: grey;
+  border-radius: 3px;
+  padding: 1.75px 6px;
+}
+.geolocation-button:hover {
+  border-color: #4a4a4a;
+  background-color: #e5e4e4;
+}
 .col-6 {
   text-align: center;
 }
@@ -61,6 +71,11 @@ p {
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;
+}
+#city {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 #description::first-letter {
   text-transform: capitalize;

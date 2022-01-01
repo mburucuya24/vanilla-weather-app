@@ -19,7 +19,26 @@ function formatDate(timestamp) {
   ];
   let day = days[date.getDay()];
 
-  return `${day} ${hours}:${minutes}`;
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[new Date().getMonth()];
+
+  let number = new Date().getDate();
+  let year = new Date().getFullYear();
+
+  return `${day}, ${month} ${number}, ${year}<br />${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -104,9 +123,9 @@ function displayForecast(response) {
                 <div class="weather-forecast-temperatures">
                   <span class="weather-forecast-temperature-max">${Math.round(
                     forecastDay.temp.max
-                  )}</span> | <span class="weather-forecast-temperature-min">${Math.round(
+                  )}°</span> | <span class="weather-forecast-temperature-min">${Math.round(
           forecastDay.temp.min
-        )}</span>             
+        )}°</span>             
                 </div>
               </div>
             </div>
