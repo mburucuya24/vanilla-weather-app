@@ -49,6 +49,9 @@ p {
 .col-6 {
   text-align: center;
 }
+.low-temp {
+  opacity: 0.5;
+}
 .weather-temperature .active {
   color: #000000;
   cursor: default;

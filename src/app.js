@@ -181,6 +181,7 @@ function displayForecast(response) {
 
 function displayTemperature(response) {
   celsiusTemperature = response.data.main.temp;
+
   let windSpeed = response.data.wind.speed;
 
   let temperatureElement = document.querySelector("#temperature");
@@ -191,6 +192,12 @@ function displayTemperature(response) {
 
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+
+  let highTempElement = document.querySelector("#today-high-temp");
+  highTempElement.innerHTML = Math.round(response.data.main.temp_max);
+
+  let lowTempElement = document.querySelector("#today-low-temp");
+  lowTempElement.innerHTML = Math.round(response.data.main.temp_min);
 
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
@@ -219,7 +226,7 @@ function displayFahrenheitTemperature(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 
-  windSpeed = response.data.wind.speed;
+  let windSpeed = response.data.wind.speed;
 
   let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = Math.round(windSpeed / 1.609);
@@ -235,7 +242,7 @@ function displayCelsiusTemperature(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
-  windSpeed = response.data.wind.speed;
+  let windSpeed = response.data.wind.speed;
 
   let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = Math.round(windSpeed);
@@ -245,6 +252,8 @@ function displayCelsiusTemperature(event) {
 }
 
 let celsiusTemperature = null;
+
+let forecastTempsMax = null;
 
 let warsawLink = document.querySelector("#warsaw-city");
 warsawLink.addEventListener("click", updateWarsaw);
