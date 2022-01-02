@@ -72,6 +72,9 @@ p {
 .weather-forecast-temperature-min {
   opacity: 0.5;
 }
+#warsaw-city #asuncion-city {
+  color: black;
+}
 #city {
   font-family: "Playfair Display", serif;
   font-weight: 700;

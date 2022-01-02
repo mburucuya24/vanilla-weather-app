@@ -57,6 +57,46 @@ function formatDay(timestamp) {
   return days[day];
 }
 
+function updateWarsaw(event) {
+  event.preventDefault();
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = "Warsaw";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function updateAsuncion(event) {
+  event.preventDefault();
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = "Asuncion";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function updateSeoul(event) {
+  event.preventDefault();
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = "Seoul";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function updateSeattle(event) {
+  event.preventDefault();
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = "Seattle";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function updateWashingtondc(event) {
+  event.preventDefault();
+  let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
+  let city = "Washington DC";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function showPosition(position) {
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let latitude = position.coords.latitude;
@@ -203,6 +243,21 @@ function displayCelsiusTemperature(event) {
 }
 
 let celsiusTemperature = null;
+
+let warsawLink = document.querySelector("#warsaw-city");
+warsawLink.addEventListener("click", updateWarsaw);
+
+let asuncionLink = document.querySelector("#asuncion-city");
+asuncionLink.addEventListener("click", updateAsuncion);
+
+let seoulLink = document.querySelector("#seoul-city");
+seoulLink.addEventListener("click", updateSeoul);
+
+let seattleLink = document.querySelector("#seattle-city");
+seattleLink.addEventListener("click", updateSeattle);
+
+let washingtondcLink = document.querySelector("#washingtondc-city");
+washingtondcLink.addEventListener("click", updateWashingtondc);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
