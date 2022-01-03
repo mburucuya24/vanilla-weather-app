@@ -59,6 +59,10 @@ function formatDay(timestamp) {
 
 function updateWarsaw(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let city = "Warsaw";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -67,6 +71,10 @@ function updateWarsaw(event) {
 
 function updateAsuncion(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let city = "Asuncion";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -75,6 +83,10 @@ function updateAsuncion(event) {
 
 function updateSeoul(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let city = "Seoul";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -83,6 +95,10 @@ function updateSeoul(event) {
 
 function updateSeattle(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let city = "Seattle";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -91,6 +107,10 @@ function updateSeattle(event) {
 
 function updateWashingtondc(event) {
   event.preventDefault();
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let city = "Washington DC";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -103,7 +123,6 @@ function showPosition(position) {
   let longitude = position.coords.longitude;
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -128,16 +147,19 @@ function searchCity(event) {
 }
 
 function search(city) {
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
   axios.get(apiUrl).then(displayTemperature);
 }
 
 function getForecast(coordinates) {
   let apiKey = "fa76215f0cf93568bc4f8d5fad72485f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -182,7 +204,9 @@ function displayForecast(response) {
 function displayTemperature(response) {
   celsiusTemperature = response.data.main.temp;
 
-  let windSpeed = response.data.wind.speed;
+  highTemp = response.data.main.temp_max;
+
+  windSpeed = response.data.wind.speed;
 
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
@@ -194,7 +218,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
 
   let highTempElement = document.querySelector("#today-high-temp");
-  highTempElement.innerHTML = Math.round(response.data.main.temp_max);
+  highTempElement.innerHTML = Math.round(highTemp);
 
   let lowTempElement = document.querySelector("#today-low-temp");
   lowTempElement.innerHTML = Math.round(response.data.main.temp_min);
@@ -225,14 +249,6 @@ function displayFahrenheitTemperature(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-
-  let windSpeed = response.data.wind.speed;
-
-  let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = Math.round(windSpeed / 1.609);
-
-  let speedUnitsElement = document.querySelector("#speed-units");
-  speedUnitsElement.innerHTML = `mi/h`;
 }
 
 function displayCelsiusTemperature(event) {
@@ -241,19 +257,9 @@ function displayCelsiusTemperature(event) {
   celsiusLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-
-  let windSpeed = response.data.wind.speed;
-
-  let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = Math.round(windSpeed);
-
-  let speedUnitsElement = document.querySelector("#speed-units");
-  speedUnitsElement.innerHTML = `km/h`;
 }
 
 let celsiusTemperature = null;
-
-let forecastTempsMax = null;
 
 let warsawLink = document.querySelector("#warsaw-city");
 warsawLink.addEventListener("click", updateWarsaw);
